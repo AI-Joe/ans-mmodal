@@ -1,0 +1,13 @@
+---
+- name: install docker
+  yum:
+    name: docker
+    status: lastest
+- name: make python dockerfile
+  template: 
+    src: /templates/Dockerfile
+    dest: /opt/
+- name: build image
+  command: docker build -t mmodal/anagram --build-arg STRING_ONE={{str_one}} STRING_TWO={{str_two}}
+- name: run anagram.py
+  command: docker run mmodal/anagram
