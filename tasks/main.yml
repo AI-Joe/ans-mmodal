@@ -10,8 +10,10 @@
 
 - name: build image
   command: docker build -t mmodal/anagram ./ans-mmodal/files/
-  when: "{{result}}"" != ""
+  when: result != ""
   
 - name: run anagram.py
-  command: docker run mmodal/anagram -e STRING_ONE={{str_one}} -e STRING_TWO={{str_two}}
-  
+  command: docker run mmodal/anagram
+  environment:
+    STRING_ONE: {{str_one}}
+    STRING_TWO: {{str_two}}
