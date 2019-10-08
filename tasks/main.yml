@@ -5,12 +5,12 @@
     state: latest
 
 - name: register image build
-  command: docker images
+  command: docker images mmodal/anagram
   register: result
 
 - name: build image
   command: docker build -t mmodal/anagram ./ans-mmodal/files/
-  when: result != ""
+  when: result.stdout_lines|length < 2
   
 - name: run anagram.py
   command: docker run -e STRING_ONE="{{str_one}}" -e STRING_TWO="{{str_two}}" mmodal/anagram
