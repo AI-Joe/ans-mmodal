@@ -2,7 +2,7 @@
 - name: install docker
   yum:
     name: docker
-    status: latest
+    state: latest
 - name: make python dockerfile
   template: 
     src: /templates/Dockerfile
