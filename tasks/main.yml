@@ -15,5 +15,5 @@
 - name: run anagram.py
   command: docker run mmodal/anagram
   environment:
-    STRING_ONE: {{str_one}}
-    STRING_TWO: {{str_two}}
+    STRING_ONE: "{{str_one}}"
+    STRING_TWO: "{{str_two}}"
