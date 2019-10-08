@@ -5,11 +5,11 @@
     state: latest
 
 - name: register image build
-  command: docker images mmodal/anagram
+  command: docker images
   register: result
 
 - name: build image
-  command: docker build -t mmodal/anagram ./files/Dockerfile
+  command: docker build -t mmodal/anagram ./files/
   when: result != ""
   
 - name: run anagram.py
