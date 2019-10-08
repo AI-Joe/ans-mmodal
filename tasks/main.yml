@@ -3,7 +3,15 @@
   yum:
     name: docker
     state: latest
+
+- name: register image build
+  command: docker images | grep mmodal/anagram
+  register: result
+
 - name: build image
-  command: docker build -t mmodal/anagram
+  command: docker build -t mmodal/anagram ./files/Dockerfile
+  when: result != ""
+  
 - name: run anagram.py
   command: docker run mmodal/anagram -e STRING_ONE={{str_one}} -e STRING_TWO={{str_two}}
+  
