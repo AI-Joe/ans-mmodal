@@ -17,3 +17,7 @@
   environment:
     STRING_ONE: "{{str_one}}"
     STRING_TWO: "{{str_two}}"
+  register: anagram
+
+- debug:
+  msg: anagram
