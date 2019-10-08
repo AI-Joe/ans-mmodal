@@ -13,11 +13,8 @@
   when: result != ""
   
 - name: run anagram.py
-  command: docker run mmodal/anagram
-  environment:
-    STRING_ONE: "{{str_one}}"
-    STRING_TWO: "{{str_two}}"
+  command: docker run -e STRING_ONE="{{str_one}}" -e STRING_TWO="{{str_two}}" mmodal/anagram
   register: anagram
 
 - debug:
-  msg: anagram
+    msg: "{{anagram.stdout_lines}}"
