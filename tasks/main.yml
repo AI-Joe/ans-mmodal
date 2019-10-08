@@ -5,7 +5,7 @@
     state: latest
 
 - name: register image build
-  command: docker images
+  command: docker images | grep mmodal/anagram
   register: result
 
 - name: build image
