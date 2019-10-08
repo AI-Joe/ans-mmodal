@@ -3,11 +3,7 @@
   yum:
     name: docker
     state: latest
-- name: make python dockerfile
-  template: 
-    src: /templates/Dockerfile
-    dest: /opt/
 - name: build image
-  command: docker build -t mmodal/anagram --build-arg STRING_ONE={{str_one}} STRING_TWO={{str_two}}
+  command: docker build -t mmodal/anagram
 - name: run anagram.py
-  command: docker run mmodal/anagram
+  command: docker run mmodal/anagram -e STRING_ONE={{str_one}} -e STRING_TWO={{str_two}}
