@@ -16,7 +16,7 @@
     - name: start docker
       service: 
         name: docker
-        stated: started
+        state: started
 
     - name: register image build
       command: docker images mmodal/anagram
