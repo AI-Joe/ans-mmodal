@@ -2,4 +2,7 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ans-mmodal
+    - ../ans-mmodal
+  var:
+    str_one: hannah
+    str_two: hannah

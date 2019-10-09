@@ -1,6 +1,6 @@
 ---
 - block:
-    - name: check if package is installed
+    - name: register docker is installed
       package:
         name: docker
         state: latest
