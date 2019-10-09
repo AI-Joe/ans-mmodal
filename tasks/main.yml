@@ -14,9 +14,10 @@
       when: check_installed.changed
     
     - name: start docker
-      service: docker
-      stated: started
-      
+      service: 
+        name: docker
+        stated: started
+
     - name: register image build
       command: docker images mmodal/anagram
       register: result
