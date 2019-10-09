@@ -1,8 +1,16 @@
 ---
+- name: check if package is installed
+  package:
+    name: docker
+    state: latest
+  check_mode: true
+  register: check_installed
+
 - name: install docker
   yum:
     name: docker
     state: latest
+  when: check_installed.changed
 
 - name: register image build
   command: docker images mmodal/anagram
@@ -15,6 +23,12 @@
 - name: run anagram.py
   command: docker run -e STRING_ONE="{{str_one}}" -e STRING_TWO="{{str_two}}" mmodal/anagram
   register: anagram
+
+- debug:
+    msg: "str_one and str_two have to be present"
+  when:
+    - str_one is not defined
+    - str_two is not defined
 
 - debug:
     msg: "{{anagram.stdout_lines}}"
