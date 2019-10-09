@@ -1,38 +1,44 @@
-Role Name
+ans-mmodal
 =========
 
-A brief description of the role goes here.
+Installs and starts docker, builds a python docker image that takes two strings and prints true or false depending on if they are anagrams.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+centos7 machine
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+|Name|Variable Type|
+|----|-------------|
+|str_one|String|
+|str_two|String|
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
+    ---
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - ans-model
+      environment:
+        STRING_ONE: "{{str_one}}"
+        STRING_TWO: "{{str_two}}"
 
-License
--------
+How To Run
+----------
 
-BSD
+1. ssh into centos7 VM
+2. run `yum -y install git epel-release ansible`
+3. run `cd /opt/`
+4. run `git clone https://github.com/AI-Joe/ans-mmodal.git`
+5. run `cd /opt/ans-mmodal/files`
+6. run `sh setup.sh`
+7. run `cd /opt/`
+8. run `ansible-playbook -i inventory mmodal_playbook.yml -e "str_one={string_value_one}" -e "str_two={string_value_two}"`
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Joe Lieberman jlbrmn@gmail.com

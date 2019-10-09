@@ -2,7 +2,8 @@
 
 cd /opt
 echo '---
-- hosts: server
+- hosts: localhost
+  connection: local
   roles:
     - ans-mmodal
   environment:
