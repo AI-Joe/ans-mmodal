@@ -4,5 +4,5 @@
   roles:
     - ../../ans-mmodal
   vars:
-    str_one: racecar
+    str_one: blue
     str_two: hannah
