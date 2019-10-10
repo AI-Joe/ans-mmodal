@@ -6,13 +6,13 @@ Installs and starts docker, builds a python docker image that takes two strings 
 Requirements
 ------------
 
-centos7 VM
+vagrant centos7 VM
 
 Assumptions
 -----------
 
-* VM's proxies are properly configured
-* Vagrantfile is properly configured to support docker
+* VM's can access github
+* VM can support docker
 
 Role Variables
 --------------
@@ -25,7 +25,7 @@ Role Variables
 Example Playbook
 ----------------
     ---
-    - hosts: servers
+    - hosts: localhost
       roles:
         - ans-model
       environment:
@@ -43,6 +43,13 @@ How To Run
 6. run `sh setup.sh`
 7. run `cd /opt/`
 8. run `ansible-playbook -i inventory mmodal_playbook.yml -e "str_one={string_value_one}" -e "str_two={string_value_two}"`
+
+Run Test Playbooks
+-----------
+The variables are already added to the playbooks. Change test_anagram to another name to test other cases.
+
+1. run `cd /opt/ans-mmodal/tests`
+2. run `ansible-playbook -i inventory test_anagram.yml`
 
 Author Information
 ------------------
