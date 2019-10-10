@@ -11,7 +11,7 @@ vagrant centos7 VM
 Assumptions
 -----------
 
-* VM's can access github
+* VM can access github
 * VM can support docker
 
 Role Variables
