@@ -28,9 +28,6 @@ Example Playbook
     - hosts: localhost
       roles:
         - ans-model
-      environment:
-        STRING_ONE: "{{str_one}}"
-        STRING_TWO: "{{str_two}}"
 
 How To Run
 ----------

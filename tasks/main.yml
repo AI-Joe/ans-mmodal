@@ -30,8 +30,18 @@
       command: docker run -e STRING_ONE="{{str_one}}" -e STRING_TWO="{{str_two}}" mmodal/anagram
       register: anagram
     
-    - debug:
-        msg: "{{anagram.stdout_lines}}"
+    - name: get docker logs
+      command: docker ps -qa
+      register: container_name
+    
+    - name: docker logs
+      command: docker logs "{{container_name.stdout_lines[0]}}"
+      register: anagram
+
+    - name: docker logs debug
+      debug: 
+        var: anagram.stdout
+
   when:
     - str_one is defined
     - str_two is defined
