@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   roles:
-    - ../ans-mmodal
-  environment:
-    STRING_ONE: "{{str_one}}"
-    STRING_TWO: "{{str_two}}"
+    - ../../ans-mmodal
+  vars:
+    str_one: hannah 
+    str_two: hannah
