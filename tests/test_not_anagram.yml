@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+    - ../../ans-mmodal
+  vars:
+    str_one: racecar
+    str_two: hannah
