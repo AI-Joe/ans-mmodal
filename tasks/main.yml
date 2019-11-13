@@ -1,12 +1,11 @@
 ---
-- name: debug
-  command: pwd
-  register: results
-
-- debug: 
-    msg: "{{ results }}"
-    
 - block:
+    - name: get anagram repo
+      git:
+        repo: 'https://github.com/AI-Joe/mmodel_anagram.git'
+        dest: /opt/anagram
+        clone: yes
+
     - name: register docker is installed
       package:
         name: docker
@@ -30,7 +29,7 @@
       register: result
 
     - name: build image
-      command: docker build -t mmodal/anagram ./files/
+      command: docker build -t mmodal/anagram /opt/anagram
       when: result.stdout_lines|length < 2
     
     - name: run anagram.py
