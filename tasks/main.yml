@@ -1,5 +1,4 @@
 ---
-- include: files/
 - block:
     - name: register docker is installed
       package:
@@ -24,7 +23,7 @@
       register: result
 
     - name: build image
-      command: docker build -t mmodal/anagram files/
+      command: docker build -t mmodal/anagram ./files/
       when: result.stdout_lines|length < 2
     
     - name: run anagram.py
