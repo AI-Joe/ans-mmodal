@@ -23,7 +23,7 @@
       register: result
 
     - name: build image
-      command: docker build -t mmodal/anagram /opt/ans-mmodal/files/
+      command: docker build -t mmodal/anagram files/
       when: result.stdout_lines|length < 2
     
     - name: run anagram.py
